@@ -8,7 +8,7 @@
       "start": "node index.js"
     },
     "keywords": [],
-    "author": "Your Name",
+    "author": "Miguel Perez",
     "license": "MIT",
     "dependencies": {
       "inquirer": "^8.2.4"
