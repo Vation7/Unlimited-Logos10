@@ -2,3 +2,5 @@ node_modules/
 
 # Generated files
 /examples/logo.svg
+
+.DS_Store
