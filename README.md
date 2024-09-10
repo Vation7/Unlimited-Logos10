@@ -19,8 +19,8 @@ Users can choose a shape, enter text, and select colors for both the text and th
 1. Enter the text you want to display on the logo.
 2. Choose the color for the text.
 3. Follow the prompts to select a shape.
-3. Choose the color for the shape.
-4. The generated SVG file will be saved in the project directory.
+4. Choose the color for the shape.
+5. The generated SVG file will be saved in the project directory.
 
 ## Running Tests
 
@@ -45,4 +45,8 @@ For any questions or feedback, please contact me.
 
 ## Walkthrough Video
 
-[Link to walkthrough video](https://example.com)
+![Walkthrough Video](Videos/CleanShot.gif)
+
+### Result
+
+<img src="Images/TestImage.png" alt="Example Logo" width="200"/>
