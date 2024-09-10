@@ -1,0 +1,60 @@
+const fs = require('fs');
+const inquirer = require('inquirer');
+const { Circle, Triangle, Square } = require('./lib/shapes');
+
+const questions = [
+  {
+    type: 'input',
+    name: 'text',
+    message: 'Enter up to three characters for the logo:',
+    validate: input => input.length <= 3 || 'Please enter up to three characters.',
+  },
+  {
+    type: 'input',
+    name: 'textColor',
+    message: 'Enter a color for the text (keyword or hexadecimal):',
+  },
+  {
+    type: 'list',
+    name: 'shape',
+    message: 'Choose a shape for the logo:',
+    choices: ['Circle', 'Triangle', 'Square'],
+  },
+  {
+    type: 'input',
+    name: 'shapeColor',
+    message: 'Enter a color for the shape (keyword or hexadecimal):',
+  },
+];
+
+function generateLogo({ text, textColor, shape, shapeColor }) {
+  let shapeObj;
+  switch (shape) {
+    case 'Circle':
+      shapeObj = new Circle();
+      break;
+    case 'Triangle':
+      shapeObj = new Triangle();
+      break;
+    case 'Square':
+      shapeObj = new Square();
+      break;
+  }
+  
+  shapeObj.setColor(shapeColor);
+
+  const svgContent = `
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+  ${shapeObj.render()}
+  <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
+</svg>`;
+  
+  // Ensure the file is saved in the examples directory
+  const filePath = './examples/logo.svg';
+
+  // Write the SVG content to the file in the examples folder
+  fs.writeFileSync(filePath, svgContent);
+  console.log('Generated logo.svg inside the examples/ folder');
+}
+
+inquirer.prompt(questions).then(generateLogo);

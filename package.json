@@ -1,0 +1,22 @@
+{
+    "name": "logo-generator",
+    "version": "1.0.0",
+    "description": "A simple Node.js CLI application to generate SVG logos",
+    "main": "index.js",
+    "scripts": {
+      "test": "jest",
+      "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+      "inquirer": "^8.2.4"
+    },
+    "devDependencies": {
+      "jest": "^29.6.1"
+    },
+    "jest": {
+      "testEnvironment": "node"
+    }
+  }
