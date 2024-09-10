@@ -1,1 +1,4 @@
 node_modules/
+
+# Generated files
+/examples/logo.svg
