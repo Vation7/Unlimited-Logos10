@@ -2,6 +2,7 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const { Circle, Triangle, Square } = require('./lib/shapes');
 
+// Questions for user input
 const questions = [
   {
     type: 'input',
@@ -27,6 +28,7 @@ const questions = [
   },
 ];
 
+// Function to generate the SVG logo with a unique name
 function generateLogo({ text, textColor, shape, shapeColor }) {
   let shapeObj;
   switch (shape) {
@@ -40,7 +42,7 @@ function generateLogo({ text, textColor, shape, shapeColor }) {
       shapeObj = new Square();
       break;
   }
-  
+
   shapeObj.setColor(shapeColor);
 
   const svgContent = `
@@ -48,13 +50,18 @@ function generateLogo({ text, textColor, shape, shapeColor }) {
   ${shapeObj.render()}
   <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}</text>
 </svg>`;
-  
-  // Ensure the file is saved in the examples directory
-  const filePath = './examples/logo.svg';
 
-  // Write the SVG content to the file in the examples folder
+  // Create a unique filename using a timestamp
+  const timestamp = Date.now();
+  const filePath = `./examples/logo_${timestamp}.svg`;
+
+  // Ensure the examples folder exists
+  if (!fs.existsSync('./examples')) {
+    fs.mkdirSync('./examples');
+  }
+
+  // Write the SVG file with the unique name
   fs.writeFileSync(filePath, svgContent);
-  console.log('Generated logo.svg inside the examples/ folder');
+  console.log(`Generated ${filePath}`);
 }
-
 inquirer.prompt(questions).then(generateLogo);
